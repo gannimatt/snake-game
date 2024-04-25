@@ -6,7 +6,8 @@ class SnakeGame:
         self.master = master
         self.canvas = tk.Canvas(master, width=400, height=400, bg='black')
         self.canvas.pack()
-        self.snake = [(20, 20)]
+        # Start snake in the middle of the canvas, heading right
+        self.snake = [(200, 200), (190, 200), (180, 200)]
         self.snake_direction = 'Right'
         self.food = self.place_food()
         self.running = True
@@ -26,12 +27,21 @@ class SnakeGame:
 
     def on_key_press(self, event):
         key = event.keysym
-        direction_keys = {'Left', 'Right', 'Up', 'Down'}
-        if key in direction_keys:
-            self.snake_direction = key
+        direction_map = {
+            'Left': 'Left', 'Right': 'Right', 'Up': 'Up', 'Down': 'Down',
+            'a': 'Left', 'd': 'Right', 'w': 'Up', 's': 'Down'
+        }
+        if key in direction_map:
+            new_direction = direction_map[key]
+            # Check for reversing direction
+            if (new_direction == 'Left' and self.snake_direction != 'Right') or \
+                    (new_direction == 'Right' and self.snake_direction != 'Left') or \
+                    (new_direction == 'Up' and self.snake_direction != 'Down') or \
+                    (new_direction == 'Down' and self.snake_direction != 'Up'):
+                self.snake_direction = new_direction
         elif key == 'r' and not self.running:
             self.canvas.delete('all')
-            self.snake = [(20, 20)]
+            self.snake = [(200, 200), (190, 200), (180, 200)]
             self.snake_direction = 'Right'
             self.food = self.place_food()
             self.running = True
