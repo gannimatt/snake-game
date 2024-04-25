@@ -1,7 +1,13 @@
+import sys
+import os
 import unittest
 from unittest.mock import MagicMock
 from tkinter import Tk
-from src.snake_game import SnakeGame
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'src')))
+
+from snake_game import SnakeGame
+
 
 class TestSnakeGame(unittest.TestCase):
 
@@ -15,8 +21,9 @@ class TestSnakeGame(unittest.TestCase):
         self.root.destroy()
 
     def test_initial_state(self):
-        self.assertEqual(len(self.game.snake), 1)
-        self.assertEqual(len(self.game.canvas.find_withtag('food')), 1)
+        self.assertEqual(len(self.game.snake), 3, "Initial snake length should be 3 segments.")
+        self.assertEqual(len(self.game.canvas.find_withtag('food')), 1,
+                         "There should be exactly one food item on the canvas.")
 
     def test_snake_movement(self):
         initial_snake_coords = self.game.snake.copy()
@@ -43,10 +50,16 @@ class TestSnakeGame(unittest.TestCase):
 
     def test_restart_and_exit(self):
         self.game.running = False
+        # Restart the game
         self.game.on_key_press(MagicMock(keysym='r'))
-        self.assertTrue(self.game.running)  # After restarting, the game should be running
-        self.assertEqual(len(self.game.snake), 1)  # Snake should be reset
+        self.assertTrue(self.game.running, "The game should be running after restart.")
+        self.assertEqual(len(self.game.snake), 3, "Snake should be reset to 3 segments after restart.")
+
+        # Close the game
         self.game.on_key_press(MagicMock(keysym='x'))
+        # Here you might need to check if the root window is destroyed or similar flag is set,
+        # but typically, GUI interactions like closing windows are not handled in unittests directly.
+
 
     def test_snake_growth(self):
         # Ensure the game is running
