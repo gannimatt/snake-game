@@ -1,0 +1,9 @@
+docker build -t snake-game .
+docker run -it --rm -e DISPLAY=host.docker.internal:0.0 snake-game
+XLaunch #Yuklediyim app
+docker images #List Docker Images
+docker rmi <<name>> #Remove an Image
+docker ps #List Running Containers
+docker ps -a #List All Containers
+docker stop [CONTAINER_ID] #Stop a Container
+
