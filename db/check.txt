@@ -1,0 +1,3 @@
+use snake_game_db
+db.game_sessions.find().pretty()
+db.game_sessions.deleteMany({})
