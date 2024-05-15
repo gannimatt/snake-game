@@ -1,4 +1,3 @@
-import json
 import tkinter as tk
 import random
 from mongodb import store_game_result, dump_data_to_json, clear_output_json
@@ -95,7 +94,7 @@ def main():
         game = SnakeGame(root, username)
         root.mainloop()
     else:
-        root.destroy()  # Close the window if no username is entered
+        root.destroy()
 
 
 if __name__ == "__main__":
