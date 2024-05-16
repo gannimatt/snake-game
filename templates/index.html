@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Snake Game</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
+<style>
+    body, html { height: 100%; margin: 0; display: flex; justify-content: center; align-items: center; }
+    canvas { background: #000; display: block; margin-top: 10px; }
+    #gameControls { margin-top: 20px; }
+</style>
+</head>
+<body>
+<div class="container text-center">
+    <div class="form-group">
+        <label for="username">Enter your username:</label>
+        <input type="text" id="username" class="form-control">
+        <button id="startGame" class="btn btn-primary mt-2">Start Game</button>
+    </div>
+    <canvas id="gameCanvas" width="400" height="400"></canvas>
+    <div id="scoreDisplay">Score: 0</div>
+    <div id="gameControls">
+        <button id="restartGame" class="btn btn-warning">Restart Game (R)</button>
+        <button id="quitGame" class="btn btn-danger">Quit Game (X)</button>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="{{ url_for('static', filename='snake.js') }}"></script>
+</body>
+</html>
