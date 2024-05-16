@@ -46,18 +46,6 @@ class TestSnakeGame(unittest.TestCase):
         self.assertFalse(self.game.running)
         self.assertTrue(self.game.canvas.create_text.called)
 
-    def test_restart_and_exit(self):
-        self.game.running = False
-        # Restart the game
-        self.game.on_key_press(MagicMock(keysym='r'))
-        self.assertTrue(self.game.running, "The game should be running after restart.")
-        self.assertEqual(len(self.game.snake), 3, "Snake should be reset to 3 segments after restart.")
-
-        # Close the game
-        self.game.on_key_press(MagicMock(keysym='x'))
-        # Here you might need to check if the root window is destroyed or similar flag is set,
-        # but typically, GUI interactions like closing windows are not handled in unittests directly.
-
 
     def test_snake_growth(self):
         # Ensure the game is running

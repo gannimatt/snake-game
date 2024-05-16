@@ -52,5 +52,11 @@
         "player_name": "test_user",
         "score": 0,
         "date": "2024-05-16T20:14:29.438000"
+    },
+    {
+        "_id": "664650a3b1b6a85f3d97374c",
+        "player_name": "test_user",
+        "score": 0,
+        "date": "2024-05-16T20:29:55.819000"
     }
 ]
