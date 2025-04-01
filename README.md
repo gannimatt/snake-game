@@ -87,4 +87,4 @@ This is currently a personal project and not open for contributions.
 
 ## 📄 License
 
-MIT License (or specify your own if different)
+MIT License 
